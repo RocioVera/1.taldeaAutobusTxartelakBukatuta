@@ -397,7 +397,7 @@ public class Leiho4 extends JFrame {
 				}
 
 				if (balErregis) {
-					if (Metodoak.nanGordetaEgon(nan)) {
+					if (!Metodoak.nanGordetaEgon(nan)) { //dagoela erregistratuta
 						lblErroreakonektatu.setText("Erregistratuta zaude, hasi saioa.");
 						passwordField.setEnabled(false);
 						txtIzena.setEnabled(false);

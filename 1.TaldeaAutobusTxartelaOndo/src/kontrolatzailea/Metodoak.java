@@ -258,13 +258,13 @@ public class Metodoak {
 
 		// fitxeroari bidali
 		if (pasahitza.length() == 0 || nan.length() < 8 || izena.isEmpty() || abizenak.isEmpty() || sexua.isEmpty()
-				|| nan.length() < 8 || jaioDataString == null)
+				|| nan.length() < 8 || jaioDataString == null || nanGordetaEgon(nan))
 			bal = false;
 
-		if (nanGordetaEgon(nan))
-			bal = false;
-		if (bal && nanGordetaEgon(nan))
+		if (bal && !nanGordetaEgon(nan)) {
+			sexua=sexua.toUpperCase();
 			bezeroak = Kontsultak.erregistratuBezeroak(pasaEnkr, nan, izena, abizenak, sexua, jaioDataString);
+		}
 		return bal;
 	}
 
