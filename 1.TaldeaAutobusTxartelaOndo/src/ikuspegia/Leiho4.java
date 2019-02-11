@@ -366,6 +366,9 @@ public class Leiho4 extends JFrame {
 				abizenak = txtAbizenak.getText();
 				jaioData = txtJaioData.getDate();
 				sexua = txtSexua.getText();
+				lblErroreakonektatu.setForeground(Color.RED);
+				lblErroreakonektatu.setBounds(122, 445, 318, 22);
+				lblErroreakonektatu.setVisible(true);
 
 				// erregistratzen duen metodoari deitu
 				if (jaioData != null)
@@ -392,25 +395,30 @@ public class Leiho4 extends JFrame {
 					else if (pasahitza.length() != 0)
 						passwordField.setEnabled(false);
 				}
-				if (balErregis) {
-					btn_next.setVisible(true);
-					lblErroreakonektatu.setBounds(122, 445, 318, 22);
-					lblErroreakonektatu.setForeground(Color.BLACK);
-					lblErroreakonektatu.setText("Erregistratuta");
-					lblErroreakonektatu.setVisible(true);
-					passwordField.setEnabled(false);
-					txtNan.setEnabled(false);
-					txtIzena.setEnabled(false);
-					txtAbizenak.setEnabled(false);
-					txtJaioData.setEnabled(false);
-					txtSexua.setEnabled(false);
-					btnErregistratu.setEnabled(false);
-					btnHasiSaioa.setVisible(false);
 
-				} else {
+				if (balErregis) {
+					if (Metodoak.nanGordetaEgon(nan)) {
+						lblErroreakonektatu.setText("Erregistratuta zaude, hasi saioa.");
+						passwordField.setEnabled(false);
+						txtIzena.setEnabled(false);
+						txtAbizenak.setEnabled(false);
+						txtJaioData.setEnabled(false);
+						txtSexua.setEnabled(false);
+					} else {
+						btn_next.setVisible(true);
+						lblErroreakonektatu.setForeground(Color.BLACK);
+						lblErroreakonektatu.setText("Erregistratuta");
+						passwordField.setEnabled(false);
+						txtNan.setEnabled(false);
+						txtIzena.setEnabled(false);
+						txtAbizenak.setEnabled(false);
+						txtJaioData.setEnabled(false);
+						txtSexua.setEnabled(false);
+						btnErregistratu.setEnabled(false);
+						btnHasiSaioa.setVisible(false);
+					}
+				} else { //!balErregis
 					lblErroreakonektatu.setForeground(Color.RED);
-					lblErroreakonektatu.setBounds(122, 445, 318, 22);
-					lblErroreakonektatu.setVisible(true);
 					if (nan.length() + 1 < nanLuzera)
 						lblErroreakonektatu.setText("nan-a bete behar duzu.");
 					else if (nanBalErregistratu == false)
@@ -422,26 +430,19 @@ public class Leiho4 extends JFrame {
 						txtAbizenak.setEnabled(false);
 						txtJaioData.setEnabled(false);
 						txtSexua.setEnabled(false);
-					} else if (!Metodoak.nanGordetaEgon(nan)) {
+					} else if (izena.isEmpty())
 						lblErroreakonektatu.setText("izena bete behar duzu.");
-						passwordField.setEnabled(true);
-						txtIzena.setEnabled(true);
-						txtAbizenak.setEnabled(true);
-						txtJaioData.setEnabled(true);
-						txtSexua.setEnabled(true);
-						if (izena.isEmpty())
-							lblErroreakonektatu.setText("izena bete behar duzu.");
-						else if (abizenak.isEmpty())
-							lblErroreakonektatu.setText("abizena bete behar duzu.");
-						else if (sexua.isEmpty())
-							lblErroreakonektatu.setText("sexua bete behar duzu.");
-						else if (jaioData == null)
-							lblErroreakonektatu.setText("jaioData bete behar duzu.");
-						else if (pasahitza.length() == 0)
-							lblErroreakonektatu.setText("pasahitza bete behar duzu.");
-					}
+					else if (abizenak.isEmpty())
+						lblErroreakonektatu.setText("abizena bete behar duzu.");
+					else if (sexua.isEmpty())
+						lblErroreakonektatu.setText("sexua bete behar duzu.");
+					else if (jaioData == null)
+						lblErroreakonektatu.setText("jaioData bete behar duzu.");
+					else if (pasahitza.length() == 0)
+						lblErroreakonektatu.setText("pasahitza bete behar duzu.");
 				}
 			}
+
 		});
 		btnErregistratu.setBounds(233, 408, 109, 25);
 		getContentPane().add(btnErregistratu);

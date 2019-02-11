@@ -261,7 +261,7 @@ public class Metodoak {
 				|| nan.length() < 8 || jaioDataString == null)
 			bal = false;
 
-		if (!nanGordetaEgon(nan))
+		if (nanGordetaEgon(nan))
 			bal = false;
 		if (bal && nanGordetaEgon(nan))
 			bezeroak = Kontsultak.erregistratuBezeroak(pasaEnkr, nan, izena, abizenak, sexua, jaioDataString);
