@@ -15,23 +15,22 @@ public class Leiho6 extends JFrame {
 
 	/**
 	 * Tiketa imprimatzen duen panela sortu
-	 * 
+	 * @author talde1
 	 * @param hartutakoLinea
 	 * @param autobusa
 	 * @param ibilbideZbk
 	 * @param hasierakoGeltokiaKod
 	 * @param amaierakoGeltokiaKod
-	 * @author talde1
 	 * @param txartela
 	 * @param geltIzenak
-	 * @param dataEtorri
 	 * @param dataJoan
-	 * @param arrayGeltokia
+	 * @param dataEtorri
 	 */
 	public Leiho6(String hartutakoLinea, Autobusak autobusa, int ibilbideZbk, int hasierakoGeltokiaKod,
 			int amaierakoGeltokiaKod, Txartelak txartela, ArrayList<String> geltIzenak, String dataJoan,
 			String dataEtorri) {
 		// panelaren propietateak
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\Argazkiak\\logoa.png")); 
 		getContentPane().setLayout(null);
 		this.setBounds(350, 50, 600, 600);
 		this.setResizable(false); // neurketak ez aldatzeko

@@ -13,6 +13,7 @@ public class Leiho2 extends JFrame {
 	private JRadioButton L1, L2, L3, L4;
 	private ButtonGroup group;
 	private JButton btn_next = new JButton("Hurrengoa"), restart = new JButton("\u2302");
+	private Font font;
 
 	//bariableak
 	private String hartutakoLinea;
@@ -25,12 +26,12 @@ public class Leiho2 extends JFrame {
 	 */
 	public Leiho2(ArrayList<Lineak> lineak) {
 		//panelaren propietateak
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\Argazkiak\\logoa.png")); 
 		getContentPane().setLayout(null);
 		this.setBounds(350, 50, 600, 600);
 		this.setTitle("1.taldearen txartel salmenta");
 		this.setResizable(false); // neurketak ez aldatzeko
 		this.setSize(new Dimension(600, 600));
-		Font font;
 		font = new Font("Verdana", Font.PLAIN, 16);
 
 		// botoiak

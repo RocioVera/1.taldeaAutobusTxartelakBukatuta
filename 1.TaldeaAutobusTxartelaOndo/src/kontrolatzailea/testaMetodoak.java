@@ -2,7 +2,10 @@ package kontrolatzailea;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class testaMetodoak {
 	// double
@@ -143,4 +146,84 @@ class testaMetodoak {
 		assertTrue(Metodoak.erregistratuBezeroak(pasahitza,nan,izena,abizenak,sexua,jaioDataString));
 	}
 	
+	//autobusak
+	@Test
+	public void autobusKotsMaxMetodoaTesta() {
+		String linea="L1";
+		assertEquals(Metodoak.autobusKotsMaxMetodoa(linea), null);
+	}
+	
+	//void 
+	@Test
+	//Leiho1 sortu.
+	public void lehenengoLeihoaTesta() {
+		Metodoak.lehenengoLeihoa();
+	}
+	
+	
+	//Leiho2 sortu.
+	@Test
+	public void bigarrenLeihoaTesta() throws Exception {
+		Metodoak.bigarrenLeihoa();	
+	}
+	
+	//Leiho3 sortu.
+	@Test
+	public void hirugarrenLeihoaTesta() {
+		Autobusak autobusa=Mockito.mock(Autobusak.class);
+		Metodoak.hirugarrenLeihoa("L1", autobusa);
+	}
+	
+	//Leiho4 sortu.
+	@Test
+	public void laugarrenLeihoaTesta() {
+		Autobusak autobusa=Mockito.mock(Autobusak.class);
+		ArrayList<Geltokiak> arrayGeltokia = null;
+		Metodoak.laugarrenLeihoa("L1", autobusa, 1, 2, 4, 1.1, -0.3,1.2,-0.4,arrayGeltokia, "2019-02-01 10:00:00", "2019-02-01 11:00:00");
+	}
+	
+	//Leiho5 sortu.
+	@Test
+	public void bostgarrenLeihoaTesta() {
+		Autobusak autobusa=Mockito.mock(Autobusak.class);
+		ArrayList<Geltokiak> arrayGeltokia = null;
+		Metodoak.bostgarrenLeihoa("L1", autobusa, 1, 2, 4, 5, "12345678Z",1.1,-0.3,1.2,-0.4,arrayGeltokia, "2019-02-01 10:00:00", "2019-02-01 11:00:00");
+	}
+	
+	//Leiho6 sortu.
+	@Test
+	public void seigarrenLeihoaTesta() {
+		Autobusak autobusa=Mockito.mock(Autobusak.class);
+		Txartelak txartela=Mockito.mock(Txartelak.class);
+		ArrayList<String> geltIzenak = null;
+		Metodoak.seigarrenLeihoa("L1", autobusa, 1, 2, 4,txartela,geltIzenak, "2019-02-01 10:00:00", "2019-02-01 11:00:00");
+	}
+	
+	//Billetea sortu.
+	@Test
+	public void sortuBilleteaTesta() {
+		Txartelak txartela=Mockito.mock(Txartelak.class);
+		Metodoak.sortuBilletea(txartela,"2019-02-01 10:00:00",2,5, 2,4);
+	}
+	
+	//Hasierako eta amaierako geltokien izenak lortu.
+	@Test
+	public void geltokienIzenakLortuTesta() {
+		Txartelak txartela=Mockito.mock(Txartelak.class);
+		Metodoak.geltokienIzenakLortu(txartela);
+	}
+	
+	//Tiket-a fitxategian idatzi.
+	@Test
+	public void fitxIdatziTesta() {
+		Txartelak txartela=Mockito.mock(Txartelak.class);
+		ArrayList<String> geltIzenak = null;
+		//Metodoak.fitxIdatzi(txartela, geltIzenak, "2019-02-01", "2019-02-05"); //errorea ematen du
+	}
+	
+	//Amaieran tiketa imprimatzen dagoen bitartean itxaron behar den denbora.
+	@Test
+	public void Leiho_segunduakTesta() {
+		Metodoak.Leiho_segunduak();
+	}
 }

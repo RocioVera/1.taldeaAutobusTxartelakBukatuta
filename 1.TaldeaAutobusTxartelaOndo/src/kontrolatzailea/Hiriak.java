@@ -1,6 +1,7 @@
 package kontrolatzailea;
 
 public class Hiriak {
+
 	private String kodPostal, izena;
 	
 	public Hiriak(String kodPostal, String izena) {
@@ -25,6 +26,8 @@ public class Hiriak {
 		this.izena = izena;
 	}
 	
-	
-
+	@Override
+	public String toString() {
+		return "Hiriaren posta kodea " + kodPostal + " eta izena " + izena + " da.";
+	}
 }

@@ -79,14 +79,19 @@ public class Metodoak {
 		Leiho5.setVisible(true);
 	}
 
+
 	/**
 	 * Leiho6 sortu.
 	 * @author talde1
+	 * @param hartutakoLinea
+	 * @param autobusa
+	 * @param ibilbideZbk
+	 * @param hasierakoGeltokiaKod
+	 * @param amaierakoGeltokiaKod
 	 * @param txartela
 	 * @param geltIzenak
-	 * @param dataEtorri
 	 * @param dataJoan
-	 * @param arrayGeltokia
+	 * @param dataEtorri
 	 */
 	public static void seigarrenLeihoa(String hartutakoLinea, Autobusak autobusa, int ibilbideZbk,
 			int hasierakoGeltokiaKod, int amaierakoGeltokiaKod, Txartelak txartela, ArrayList<String> geltIzenak,
@@ -150,8 +155,8 @@ public class Metodoak {
 	 */
 	public static boolean txartelaZPlazaFroga(String ibilbideData, Autobusak autobusa) {
 		boolean txartelaZPlazaBal = false;
-		int txartelaZPlazaKont = Kontsultak.txartelaZPlaza(ibilbideData);
-		if (txartelaZPlazaKont <= autobusa.getzPlaza()) {
+		int txartelaZPlazaKont = Kontsultak.txartelaZPlaza(ibilbideData, autobusa);
+		if (txartelaZPlazaKont <= autobusa.getzPlaza()-1) {
 			txartelaZPlazaBal = true;
 		}
 		return txartelaZPlazaBal;
